@@ -1,0 +1,377 @@
+[
+  {
+    "_id": "1",
+    "owner": "1",
+    "name": "Tata SUV",
+    "type": "Car",
+    "description": "Nice car",
+    "location": {
+      "street": "Puthukkulam",
+      "city": "Thrissur",
+      "state": "Kerala",
+      "pincode": "680623"
+    },
+    "number_of_seats": 4,
+    "features": [
+      "Pet Friendly",
+      "Air purifier",
+      "Voice control",
+      "Traction control",
+      "Anti-lock Braking System (ABS)",
+      "Electric ORVM",
+      "Full boot space",
+      "USB charger",
+      "Bluetooth",
+      "Aux Input",
+      "Toolkit",
+      "Air Freshener",
+      "Air Conditioning",
+      "Music System",
+      "Power steering",
+      "Power Windows",
+      "Spare Tyre"
+    ],
+    "rates": {
+      "hourly": 400,
+      "daily": 5000
+    },
+    "seller": {
+      "name": "John Doe",
+      "email": "johndoe@gmail.com",
+      "phone": "345-345-4577"
+    },
+    "images": ["a1.jpg", "a2.jpg", "a3.jpg"],
+    "isFeatured": "false",
+    "createdAt": "2024-01-01",
+    "updatedAt": "2024-01-02"
+  },
+  {
+    "_id": "2",
+    "owner": "2",
+    "name": "Toyota Sedan",
+    "type": "Car",
+    "description": "Comfortable sedan",
+    "location": {
+      "street": "Main Street",
+      "city": "New York",
+      "state": "New York",
+      "pincode": "10001"
+    },
+    "number_of_seats": 5,
+    "features": [
+      "Air Conditioning",
+      "Bluetooth",
+      "USB charger",
+      "Power steering",
+      "Power Windows",
+      "Spare Tyre"
+    ],
+    "rates": {
+      "hourly": 50,
+      "daily": 300
+    },
+    "seller": {
+      "name": "Jane Smith",
+      "email": "janesmith@example.com",
+      "phone": "123-456-7890"
+    },
+    "images": ["b1.jpg", "b2.jpg", "b3.jpg"],
+    "isFeatured": "true",
+    "createdAt": "2024-02-15",
+    "updatedAt": "2024-02-16"
+  },
+  {
+    "_id": "3",
+    "owner": "3",
+    "name": "Honda Civic",
+    "type": "Car",
+    "description": "Elegant and efficient",
+    "location": {
+      "street": "Broadway Avenue",
+      "city": "Los Angeles",
+      "state": "California",
+      "pincode": "90001"
+    },
+    "number_of_seats": 5,
+    "features": [
+      "Air Conditioning",
+      "Bluetooth",
+      "USB charger",
+      "Power steering",
+      "Power Windows",
+      "Spare Tyre"
+    ],
+    "rates": {
+      "hourly": 60,
+      "daily": 350
+    },
+    "seller": {
+      "name": "Michael Johnson",
+      "email": "michaeljohnson@example.com",
+      "phone": "987-654-3210"
+    },
+    "images": ["c1.jpg", "c2.jpg", "c3.jpg"],
+    "isFeatured": "false",
+    "createdAt": "2024-03-05",
+    "updatedAt": "2024-03-06"
+  },
+  {
+    "_id": "4",
+    "owner": "4",
+    "name": "Ford Pickup Truck",
+    "type": "Truck",
+    "description": "Powerful and rugged",
+    "location": {
+      "street": "Westside Highway",
+      "city": "Chicago",
+      "state": "Illinois",
+      "pincode": "60601"
+    },
+    "number_of_seats": 3,
+    "features": [
+      "Air Conditioning",
+      "Bluetooth",
+      "USB charger",
+      "Power steering",
+      "Power Windows",
+      "Spare Tyre"
+    ],
+    "rates": {
+      "hourly": 70,
+      "daily": 400
+    },
+    "seller": {
+      "name": "David Brown",
+      "email": "davidbrown@example.com",
+      "phone": "876-543-2109"
+    },
+    "images": ["d1.jpg", "d2.jpg", "d3.jpg"],
+    "isFeatured": "true",
+    "createdAt": "2024-04-10",
+    "updatedAt": "2024-04-11"
+  },
+  {
+    "_id": "5",
+    "owner": "5",
+    "name": "BMW 3 Series",
+    "type": "Car",
+    "description": "Luxury and performance",
+    "location": {
+      "street": "Rodeo Drive",
+      "city": "Beverly Hills",
+      "state": "California",
+      "pincode": "90210"
+    },
+    "number_of_seats": 5,
+    "features": [
+      "Leather Seats",
+      "Sunroof",
+      "GPS Navigation",
+      "Air Conditioning",
+      "Bluetooth",
+      "USB charger",
+      "Power steering",
+      "Power Windows",
+      "Spare Tyre"
+    ],
+    "rates": {
+      "hourly": 120,
+      "daily": 800
+    },
+    "seller": {
+      "name": "Emily White",
+      "email": "emilywhite@example.com",
+      "phone": "654-321-0987"
+    },
+    "images": ["e1.jpg", "e2.jpg", "e3.jpg"],
+    "isFeatured": "false",
+    "createdAt": "2024-05-20",
+    "updatedAt": "2024-05-21"
+  },
+  {
+    "_id": "6",
+    "owner": "6",
+    "name": "Mercedes-Benz S-Class",
+    "type": "Car",
+    "description": "Exquisite luxury",
+    "location": {
+      "street": "Magnolia Avenue",
+      "city": "Dallas",
+      "state": "Texas",
+      "pincode": "75201"
+    },
+    "number_of_seats": 5,
+    "features": [
+      "Leather Seats",
+      "Sunroof",
+      "GPS Navigation",
+      "Air Conditioning",
+      "Bluetooth",
+      "USB charger",
+      "Power steering",
+      "Power Windows",
+      "Spare Tyre"
+    ],
+    "rates": {
+      "hourly": 150,
+      "daily": 1000
+    },
+    "seller": {
+      "name": "Christopher Lee",
+      "email": "christopherlee@example.com",
+      "phone": "321-098-7654"
+    },
+    "images": ["f1.jpg", "f2.jpg", "f3.jpg"],
+    "isFeatured": "true",
+    "createdAt": "2024-06-12",
+    "updatedAt": "2024-06-13"
+  },
+  {
+    "_id": "7",
+    "owner": "7",
+    "name": "Audi Q7",
+    "type": "SUV",
+    "description": "Sporty and spacious",
+    "location": {
+      "street": "Bayshore Boulevard",
+      "city": "San Francisco",
+      "state": "California",
+      "pincode": "94101"
+    },
+    "number_of_seats": 7,
+    "features": [
+      "Leather Seats",
+      "Sunroof",
+      "GPS Navigation",
+      "Air Conditioning",
+      "Bluetooth",
+      "USB charger",
+      "Power steering",
+      "Power Windows",
+      "Spare Tyre"
+    ],
+    "rates": {
+      "hourly": 80,
+      "daily": 600
+    },
+    "seller": {
+      "name": "Jessica Anderson",
+      "email": "jessicaanderson@example.com",
+      "phone": "789-012-3456"
+    },
+    "images": ["g1.jpg", "g2.jpg", "g3.jpg"],
+    "isFeatured": "false",
+    "createdAt": "2024-07-25",
+    "updatedAt": "2024-07-26"
+  },
+  {
+    "_id": "8",
+    "owner": "8",
+    "name": "Chevrolet Camaro",
+    "type": "Sports Car",
+    "description": "Muscle and style",
+    "location": {
+      "street": "Sunset Boulevard",
+      "city": "Los Angeles",
+      "state": "California",
+      "pincode": "90001"
+    },
+    "number_of_seats": 4,
+    "features": [
+      "Leather Seats",
+      "Sunroof",
+      "GPS Navigation",
+      "Air Conditioning",
+      "Bluetooth",
+      "USB charger",
+      "Power steering",
+      "Power Windows",
+      "Spare Tyre"
+    ],
+    "rates": {
+      "hourly": 100,
+      "daily": 700
+    },
+    "seller": {
+      "name": "Matthew Davis",
+      "email": "matthewdavis@example.com",
+      "phone": "012-345-6789"
+    },
+    "images": ["h1.jpg", "h2.jpg", "h3.jpg"],
+    "isFeatured": "true",
+    "createdAt": "2024-08-08",
+    "updatedAt": "2024-08-09"
+  },
+  {
+    "_id": "9",
+    "owner": "9",
+    "name": "Jeep Wrangler",
+    "type": "SUV",
+    "description": "Adventure awaits",
+    "location": {
+      "street": "Pacific Coast Highway",
+      "city": "Los Angeles",
+      "state": "California",
+      "pincode": "90001"
+    },
+    "number_of_seats": 4,
+    "features": [
+      "Four-Wheel Drive",
+      "Removable Top",
+      "Air Conditioning",
+      "Bluetooth",
+      "USB charger",
+      "Power steering",
+      "Power Windows",
+      "Spare Tyre"
+    ],
+    "rates": {
+      "hourly": 90,
+      "daily": 650
+    },
+    "seller": {
+      "name": "Sophia Brown",
+      "email": "sophiabrown@example.com",
+      "phone": "234-567-8901"
+    },
+    "images": ["i1.jpg", "i2.jpg", "i3.jpg"],
+    "isFeatured": "false",
+    "createdAt": "2024-09-30",
+    "updatedAt": "2024-10-01"
+  },
+  {
+    "_id": "10",
+    "owner": "10",
+    "name": "Volkswagen Beetle",
+    "type": "Car",
+    "description": "Iconic and fun",
+    "location": {
+      "street": "Michigan Avenue",
+      "city": "Chicago",
+      "state": "Illinois",
+      "pincode": "60601"
+    },
+    "number_of_seats": 4,
+    "features": [
+      "Air Conditioning",
+      "Bluetooth",
+      "USB charger",
+      "Power steering",
+      "Power Windows",
+      "Spare Tyre"
+    ],
+    "rates": {
+      "hourly": 40,
+      "daily": 250
+    },
+    "seller": {
+      "name": "Olivia Taylor",
+      "email": "oliviataylor@example.com",
+      "phone": "345-678-9012"
+    },
+    "images": ["j1.jpg", "j2.jpg", "j3.jpg"],
+    "isFeatured": "true",
+    "createdAt": "2024-11-15",
+    "updatedAt": "2024-11-16"
+  }
+]
