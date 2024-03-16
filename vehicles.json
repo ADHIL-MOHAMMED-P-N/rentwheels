@@ -175,7 +175,6 @@
       "Spare Tyre"
     ],
     "rates": {
-      "hourly": 120,
       "daily": 800
     },
     "seller": {
