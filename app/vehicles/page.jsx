@@ -9,7 +9,7 @@ const VehiclesPage = () => {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {vehicles.map((item) => (
-              <VehicleCard vehicle={item} key={vehicles._id} />
+              <VehicleCard vehicle={item} key={item._id} />
             ))}
           </div>
         )}

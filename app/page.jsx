@@ -3,6 +3,7 @@ import HomeVehicles from "@/components/HomeVehicles";
 import InfoCards from "@/components/InfoCards";
 
 const HomePage = () => {
+  console.log(process.env.MONGODB_URI);
   return (
     <>
       <Hero />
