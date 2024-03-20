@@ -1,6 +1,8 @@
-import vehicles from "@/vehicles.json";
 import VehicleCard from "@/components/VehicleCard";
-const VehiclesPage = () => {
+import { fetchVehicles } from "@/utils/requests";
+const VehiclesPage = async () => {
+  const vehicles = await fetchVehicles();
+  vehicles.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
   return (
     <section className="px-4 py-6">
       <div className="container-xl lg:container m-auto px-4 py-6">

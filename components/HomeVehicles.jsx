@@ -1,7 +1,9 @@
-import vehicles from "@/vehicles.json";
 import VehicleCard from "@/components/VehicleCard";
 import Link from "next/link";
-const HomeVehicles = () => {
+import { fetchVehicles } from "@/utils/requests";
+
+const HomeVehicles = async () => {
+  const vehicles = await fetchVehicles();
   const recentVehicles = vehicles
     .sort(() => Math.random() - Math.random())
     .slice(0, 3);
