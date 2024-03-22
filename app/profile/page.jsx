@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useSession } from "next-auth/react"; //only in client compo, (for server getserversession)
 import profileDefault from "@/assets/images/profile.png";
+import { toast } from "react-toastify";
 
 const ProfilePage = () => {
   const { data: session } = useSession();
@@ -37,7 +38,28 @@ const ProfilePage = () => {
       fetchUserVehicles(session.user.id);
     }
   }, [session]);
-  const handleDelete = () => {};
+
+  const handleDelete = async (vehicleid) => {
+    const confirmed = window.confirm("Confirm Delete");
+    if (!confirmed) return;
+    try {
+      const res = await fetch(`/api/vehicles/${vehicleid}`, {
+        method: "DELETE",
+      });
+      if (res.status === 200) {
+        const updatedVehicles = vehicles.filter(
+          (vehicle) => vehicle._id !== vehicleid
+        );
+        setVehicles(updatedVehicles);
+        toast.success("Deleted");
+      } else {
+        toast.error("Failed to delete");
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error("Failed to delete");
+    }
+  };
   return (
     <section className="bg-blue-50">
       <div className="container m-auto py-24">
