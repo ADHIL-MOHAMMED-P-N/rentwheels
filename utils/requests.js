@@ -6,7 +6,9 @@ async function fetchVehicles() {
     if (!apiDomain) {
       return [];
     }
-    const res = await fetch(`${apiDomain}/vehicles`);
+    const res = await fetch(`${apiDomain}/vehicles`, {
+      cache: "no-store" /* for loadin quick */,
+    });
     if (!res.ok) {
       throw new Error("Data Fetch failed");
     }

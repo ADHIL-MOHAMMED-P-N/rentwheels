@@ -7,6 +7,7 @@ import Link from "next/link";
 import VehicleDetails from "@/components/VehicleDetails";
 import { FaArrowLeft } from "react-icons/fa";
 import Loader from "@/components/Loader";
+import VehicleImages from "@/components/VehicleImages";
 
 const VehiclePage = () => {
   const { id } = useParams();
@@ -149,6 +150,7 @@ const VehiclePage = () => {
               </div>
             </div>
           </section>
+          <VehicleImages images={vehicle.images} />
         </>
       )}
     </>

@@ -70,9 +70,10 @@ const VehicleAddForm = () => {
     }
     setFields((pre) => ({ ...pre, images: newImages }));
   };
+
   return (
     /* name should match the object(state) key */
-    <form>
+    <form action="/api/vehicles" method="POST" encType="multipart/form-data">
       <h2 className="text-3xl text-center font-semibold mb-6">Add Property</h2>
 
       <div className="mb-4">
@@ -207,7 +208,7 @@ const VehicleAddForm = () => {
             <input
               type="checkbox"
               id="amenity_kitchen"
-              name="amenities"
+              name="features"
               value="Air purifier"
               className="mr-2"
               checked={fields.features.includes("Air purifier")}
@@ -219,7 +220,7 @@ const VehicleAddForm = () => {
             <input
               type="checkbox"
               id="amenity_washer_dryer"
-              name="amenities"
+              name="features"
               value="Voice control"
               className="mr-2"
               checked={fields.features.includes("Voice control")}
@@ -231,7 +232,7 @@ const VehicleAddForm = () => {
             <input
               type="checkbox"
               id="amenity_free_parking"
-              name="amenities"
+              name="features"
               value="Traction control"
               className="mr-2"
               checked={fields.features.includes("Traction control")}
@@ -243,7 +244,7 @@ const VehicleAddForm = () => {
             <input
               type="checkbox"
               id="amenity_pool"
-              name="amenities"
+              name="features"
               value="Anti-lock Braking System (ABS)"
               className="mr-2"
               checked={fields.features.includes(
@@ -257,7 +258,7 @@ const VehicleAddForm = () => {
             <input
               type="checkbox"
               id="amenity_hot_tub"
-              name="amenities"
+              name="features"
               value="Electric ORVM"
               className="mr-2"
               checked={fields.features.includes("Electric ORVM")}
@@ -269,7 +270,7 @@ const VehicleAddForm = () => {
             <input
               type="checkbox"
               id="amenity_24_7_security"
-              name="amenities"
+              name="features"
               value="Full boot space"
               className="mr-2"
               checked={fields.features.includes("Full boot space")}
@@ -281,7 +282,7 @@ const VehicleAddForm = () => {
             <input
               type="checkbox"
               id="amenity_wheelchair_accessible"
-              name="amenities"
+              name="features"
               value="USB charger"
               className="mr-2"
               checked={fields.features.includes("USB charger")}
@@ -293,7 +294,7 @@ const VehicleAddForm = () => {
             <input
               type="checkbox"
               id="amenity_elevator_access"
-              name="amenities"
+              name="features"
               value="Bluetooth"
               className="mr-2"
               checked={fields.features.includes("Bluetooth")}
@@ -305,7 +306,7 @@ const VehicleAddForm = () => {
             <input
               type="checkbox"
               id="amenity_dishwasher"
-              name="amenities"
+              name="features"
               value="Aux Input"
               className="mr-2"
               checked={fields.features.includes("Aux Input")}
@@ -317,7 +318,7 @@ const VehicleAddForm = () => {
             <input
               type="checkbox"
               id="amenity_gym_fitness_center"
-              name="amenities"
+              name="features"
               value="Toolkit"
               className="mr-2"
               checked={fields.features.includes("Toolkit")}
@@ -329,7 +330,7 @@ const VehicleAddForm = () => {
             <input
               type="checkbox"
               id="amenity_air_conditioning"
-              name="amenities"
+              name="features"
               value="Air Conditioning"
               className="mr-2"
               checked={fields.features.includes("Air Conditioning")}
@@ -385,7 +386,7 @@ const VehicleAddForm = () => {
         <input
           type="text"
           id="seller_name"
-          name="seller.name."
+          name="seller.name"
           className="border rounded w-full py-2 px-3"
           placeholder="Name"
           value={fields.seller.name}
@@ -439,6 +440,7 @@ const VehicleAddForm = () => {
           className="border rounded w-full py-2 px-3"
           accept="image/*"
           multiple
+          required
           onChange={handleImageChange}
         />
       </div>
