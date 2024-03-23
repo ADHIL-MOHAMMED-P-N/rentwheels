@@ -74,7 +74,7 @@ const VehicleAddForm = () => {
   return (
     /* name should match the object(state) key */
     <form action="/api/vehicles" method="POST" encType="multipart/form-data">
-      <h2 className="text-3xl text-center font-semibold mb-6">Add Property</h2>
+      <h2 className="text-3xl text-center font-semibold mb-6">Add Vehicle</h2>
 
       <div className="mb-4">
         <label htmlFor="type" className="block text-gray-700 font-bold mb-2">
@@ -450,7 +450,7 @@ const VehicleAddForm = () => {
           className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline"
           type="submit"
         >
-          Add Property
+          Add Vehicle
         </button>
       </div>
     </form>

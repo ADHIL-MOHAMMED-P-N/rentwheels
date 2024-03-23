@@ -46,3 +46,68 @@ export const DELETE = async (request, { params }) => {
     });
   }
 };
+
+//PUT /api/vehicles/:id
+export const PUT = async (request, { params }) => {
+  try {
+    await connectDB();
+
+    const sessionUser = await getSessionUser();
+    if (!sessionUser || !sessionUser.userId) {
+      return new Response("UserId is required, unauthorized", { status: 401 });
+    }
+    const { id } = params;
+    const { userId } = sessionUser;
+
+    const formData = await request.formData();
+    //get all features and images
+    const features = formData.getAll("features");
+
+    //get vehicle to edit
+    const currentVehicle = await Vehicle.findById(id);
+    if (!currentVehicle) {
+      return new Response("Vehicle does not exists", { status: 401 });
+    }
+
+    //verifying ownership : if user is not owner of the vehicle prevent editing
+    if (currentVehicle.owner.toString() !== userId) {
+      return new Response("Unauthorized", { status: 401 });
+    }
+
+    //create vehicle obj to add to db
+
+    const vehicleData = {
+      type: formData.get("type"),
+      name: formData.get("name"),
+      description: formData.get("description"),
+      location: {
+        street: formData.get("location.street"),
+        city: formData.get("location.city"),
+        state: formData.get("location.state"),
+        pincode: formData.get("location.pincode"),
+      },
+      number_of_seats: formData.get("number_of_seats"),
+      features,
+      rates: {
+        hourly: formData.get("rates.hourly"),
+        daily: formData.get("rates.daily"),
+      },
+      seller: {
+        name: formData.get("seller.name"),
+        email: formData.get("seller.email"),
+        phone: formData.get("seller.phone"),
+      },
+      owner: userId,
+    };
+
+    //update vehicle in db and edit
+    const updatedVehicle = await Vehicle.findByIdAndUpdate(id, vehicleData);
+
+    return new Response(JSON.stringify(updatedVehicle), {
+      status: 200,
+    });
+  } catch (err) {
+    console.error(err);
+    return new Response("failed to add new vehicle", { status: 500 });
+  }
+};
