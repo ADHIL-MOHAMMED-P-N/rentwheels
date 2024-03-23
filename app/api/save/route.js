@@ -6,6 +6,36 @@ import { getSessionUser } from "@/utils/getSessionUser";
 export const dynamic =
   "force-dynamic"; /* route segment config(nexjs) : bug fix in deployment */
 
+//for fetching in saved vehicle page
+//GET api/save
+
+export const GET = async () => {
+  try {
+    await connectDB();
+
+    const sessionUser = await getSessionUser();
+
+    if (!sessionUser || !sessionUser.userId) {
+      return new Response("User ID is required", { status: 401 });
+    }
+
+    const { userId } = sessionUser;
+
+    // Find user in database
+    const user = await User.findOne({ _id: userId });
+
+    // Get users bookmarks/saved vehicles
+    const bookmarks = await Vehicle.find({ _id: { $in: user.bookmarks } }); //looking in users bookmark array in db > see vehicle that matches _id in Vehicle model and takes them
+
+    return new Response(JSON.stringify(bookmarks), { status: 200 });
+  } catch (error) {
+    console.log(error);
+    return new Response("Failed", { status: 500 });
+  }
+};
+
+//for saving the vehicle
+//POST api/save
 export const POST = async (request) => {
   try {
     await connectDB();

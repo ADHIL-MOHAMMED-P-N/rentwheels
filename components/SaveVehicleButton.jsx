@@ -9,6 +9,35 @@ const SaveVehicleButton = ({ vehicle }) => {
   const userId = session?.user?.id;
 
   const [isSaved, setIsSaved] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  //on loading the page check ifsaved or not(by calling check route) , and set state
+  useEffect(() => {
+    if (!userId) {
+      setLoading(false);
+      return;
+    } //prevent calling the check route if not logged in (otherwise on loading the page it will throw 401 error)
+    const checkBookmarkStatus = async () => {
+      try {
+        const res = await fetch("/api/save/check", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ vehicleId: vehicle._id }),
+        });
+        if (res.status === 200) {
+          const data = await res.json();
+          setIsSaved(data.isBookmarked);
+        }
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    checkBookmarkStatus();
+  }, [vehicle._id, userId]);
 
   const handleSave = async () => {
     if (!userId) {
@@ -16,7 +45,7 @@ const SaveVehicleButton = ({ vehicle }) => {
       return;
     }
     try {
-      const res = await fetch("/api/save/", {
+      const res = await fetch("/api/save", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -34,7 +63,16 @@ const SaveVehicleButton = ({ vehicle }) => {
     }
   };
 
-  return (
+  if (loading) return <p className="text-center">Loading...</p>;
+
+  return isSaved ? (
+    <button
+      onClick={handleSave}
+      className="bg-red-500 hover:bg-red-600 text-white font-bold w-full py-2 px-4 rounded-full flex items-center justify-center"
+    >
+      <FaBookmark className="fas fa-share mr-2" /> Remove Bookmark
+    </button>
+  ) : (
     <>
       <button
         onClick={handleSave}
