@@ -7,8 +7,18 @@ import { getSessionUser } from "@/utils/getSessionUser";
 export const GET = async (request) => {
   try {
     await connectDB();
-    const vehicles = await Vehicle.find({});
-    return new Response(JSON.stringify(vehicles), { status: 200 });
+    //pagination
+    //page>which page you on,//pageSize = howmany vehicles on one page
+    const page = request.nextUrl.searchParams.get("page") || 1;
+    const pageSize = request.nextUrl.searchParams.get("pageSize") || 6; //change pagesize manually accordingly
+
+    const skip = (page - 1) * pageSize; //starting pos of eachpage
+    const totalVehicles = await Vehicle.countDocuments({});
+    //logic> totalVehicles/pageSize = no of pages
+    const vehicles = await Vehicle.find({}).skip(skip).limit(pageSize);
+
+    const result = { totalVehicles, vehicles };
+    return new Response(JSON.stringify(result), { status: 200 });
   } catch (error) {
     console.log(error);
     return new Response("Error", {

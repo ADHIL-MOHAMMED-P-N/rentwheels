@@ -3,8 +3,8 @@ import Link from "next/link";
 import { fetchVehicles } from "@/utils/requests";
 
 const HomeVehicles = async () => {
-  const vehicles = await fetchVehicles();
-  const recentVehicles = vehicles
+  const data = await fetchVehicles();
+  const recentVehicles = data.vehicles
     .sort(() => Math.random() - Math.random())
     .slice(0, 3);
 
