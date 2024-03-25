@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 const Message = ({ message }) => {
   const [read, setRead] = useState(message.read);
+  const [isDelete, setIsDelete] = useState(false); //to conditionally render the message based on delted or not
+
   const handleRead = async () => {
     try {
       const res = await fetch(`/api/messages/${message._id}`, {
@@ -24,6 +26,23 @@ const Message = ({ message }) => {
       toast.error("Something went wrong");
     }
   };
+  const handleDelete = async () => {
+    try {
+      const res = await fetch(`/api/messages/${message._id}`, {
+        method: "DELETE",
+      });
+
+      if (res.status === 200) {
+        setIsDelete(true);
+        //setUnreadCount((prevCount) => prevCount - 1);
+        toast.success("Message is Deleted");
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error("Message not deleted");
+    }
+  };
+  if (isDelete) return null; //so delted elemnt won't render
   return (
     <div className="relative bg-white p-4 rounded-md shadow-md border border-gray-200">
       {/* new tag if read=false */}
@@ -68,7 +87,10 @@ const Message = ({ message }) => {
       >
         {read ? "Mark as new" : "mark as read"}
       </button>
-      <button className="mt-4 bg-red-500 text-white py-1 px-3 rounded-md">
+      <button
+        onClick={handleDelete}
+        className="mt-4 bg-red-500 text-white py-1 px-3 rounded-md"
+      >
         Delete
       </button>
     </div>

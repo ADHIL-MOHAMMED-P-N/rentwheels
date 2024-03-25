@@ -15,24 +15,16 @@ export const GET = async () => {
       });
     }
     const { userId } = sessionUser;
-    console.log(userId);
-    const messages = await Message.find({ receiver: userId })
+    //seperating the readMessages and unreadmessages, so it can be sorted(unread first)
+    const readMessages = await Message.find({ receiver: userId, read: true })
+      .sort({ createdAt: -1 })
       .populate("sender", "username")
       .populate("vehicle", "name"); //picking fields from ref Model
-    /*  const readMessages = await Message.find({ receiver: userId, read: true })
-      .sort({ createdAt: -1 }) // Sort read messages in asc order
+    const unreadMessages = await Message.find({ receiver: userId, read: false })
+      .sort({ createdAt: -1 })
       .populate("sender", "username")
-      .populate("property", "name");
-
-    const unreadMessages = await Message.find({
-      recipient: userId,
-      read: false,
-    })
-      .sort({ createdAt: -1 }) // Sort read messages in asc order
-      .populate("sender", "username")
-      .populate("property", "name");
-
-    const messages = [...unreadMessages, ...readMessages]; */
+      .populate("vehicle", "name");
+    const messages = [...unreadMessages, ...readMessages]; //unread sorted first
 
     return new Response(JSON.stringify(messages), { status: 200 });
   } catch (error) {
