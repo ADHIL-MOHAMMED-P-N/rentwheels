@@ -1,10 +1,11 @@
 "use client";
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
+import { useGlobalContext } from "@/context/GlobalContext";
 const Message = ({ message }) => {
   const [read, setRead] = useState(message.read);
   const [isDelete, setIsDelete] = useState(false); //to conditionally render the message based on delted or not
-
+  const { setCount } = useGlobalContext();
   const handleRead = async () => {
     try {
       const res = await fetch(`/api/messages/${message._id}`, {
@@ -14,6 +15,7 @@ const Message = ({ message }) => {
       if (res.status === 200) {
         const data = await res.json();
         setRead(data.read);
+        setCount((pre) => (data.read ? pre - 1 : pre + 1));
         if (data.read) {
           //should be data.read not read(state) since its asyn(may chack if condition before setRead > reult in opposte toast)
           toast.success("Marked as read");
@@ -34,6 +36,7 @@ const Message = ({ message }) => {
 
       if (res.status === 200) {
         setIsDelete(true);
+        setCount((pre) => pre - 1);
         //setUnreadCount((prevCount) => prevCount - 1);
         toast.success("Message is Deleted");
       }
