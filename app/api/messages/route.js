@@ -3,6 +3,44 @@ import Message from "@/models/Message";
 import { getSessionUser } from "@/utils/getSessionUser";
 export const dynamic = "force-dynamic"; //for deployment
 
+//get all messages
+// GET /api/messages
+export const GET = async () => {
+  try {
+    await connectDB();
+    const sessionUser = await getSessionUser();
+    if (!sessionUser || !sessionUser.user) {
+      return new Response(JSON.stringify("User ID is needed"), {
+        status: 401,
+      });
+    }
+    const { userId } = sessionUser;
+    console.log(userId);
+    const messages = await Message.find({ receiver: userId })
+      .populate("sender", "username")
+      .populate("vehicle", "name"); //picking fields from ref Model
+    /*  const readMessages = await Message.find({ receiver: userId, read: true })
+      .sort({ createdAt: -1 }) // Sort read messages in asc order
+      .populate("sender", "username")
+      .populate("property", "name");
+
+    const unreadMessages = await Message.find({
+      recipient: userId,
+      read: false,
+    })
+      .sort({ createdAt: -1 }) // Sort read messages in asc order
+      .populate("sender", "username")
+      .populate("property", "name");
+
+    const messages = [...unreadMessages, ...readMessages]; */
+
+    return new Response(JSON.stringify(messages), { status: 200 });
+  } catch (error) {
+    console.log(error);
+    return new Response("Something went wrong", { status: 500 });
+  }
+};
+
 //sending messages
 // POST /api/messages
 export const POST = async (request) => {
