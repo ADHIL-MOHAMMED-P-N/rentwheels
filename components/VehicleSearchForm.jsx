@@ -28,7 +28,7 @@ const VehicleSearchForm = () => {
           type="text"
           id="location"
           placeholder="Enter Keywords or Location (City, State, Zip, etc"
-          className="w-full px-4 py-3 rounded-lg bg-white text-gray-800 focus:outline-none focus:ring focus:ring-blue-500"
+          className="w-full px-4 py-3  bg-white text-gray-800 focus:outline-none focus:ring focus:ring-color-red"
           onChange={(e) => setLocation(e.target.value)}
           value={location}
         />
@@ -39,7 +39,7 @@ const VehicleSearchForm = () => {
         </label>
         <select
           id="property-type"
-          className="w-full px-4 py-3 rounded-lg bg-white text-gray-800 focus:outline-none focus:ring focus:ring-blue-500"
+          className="w-full px-4 py-3  bg-white text-gray-800 focus:outline-none focus:ring focus:ring-color-red"
           value={type}
           onChange={(e) => setType(e.target.value)}
         >
@@ -56,7 +56,7 @@ const VehicleSearchForm = () => {
       </div>
       <button
         type="submit"
-        className="md:ml-4 mt-4 md:mt-0 w-full md:w-auto px-6 py-3 rounded-lg bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-500"
+        className="md:ml-4 mt-4 md:mt-0 w-full md:w-auto px-6 py-3  bg-color-red text-white hover:bg-red-500 focus:outline-none focus:ring focus:ring-color-red transition-colors"
       >
         Search
       </button>

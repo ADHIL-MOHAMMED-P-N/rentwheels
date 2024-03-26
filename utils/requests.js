@@ -2,7 +2,7 @@ const apiDomain = process.env.NEXT_PUBLIC_API_DOMAIN || null;
 //fetch all vehicles
 async function fetchVehicles() {
   try {
-    //when domain is not available , return [] otherwise it will throw error
+    //when domain is not available , return [] otherwise it will throw error on deployment(since during deployment we don't have domain)
     if (!apiDomain) {
       return [];
     }

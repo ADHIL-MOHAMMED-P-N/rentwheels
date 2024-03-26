@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import logo from "@/assets/images/logo-white.png";
+
 import { TbSteeringWheel } from "react-icons/tb";
 import profileDefaultImg from "@/assets/images/profile.png";
 import Link from "next/link";
@@ -9,6 +9,8 @@ import { useEffect, useState } from "react";
 import { FaGoogle } from "react-icons/fa";
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 import NewMessageCount from "./NewMessageCount";
+import { IoMdArrowDropdownCircle } from "react-icons/io";
+import { MdOutlineArrowDropDownCircle } from "react-icons/md";
 
 const Navbar = () => {
   const { data: session } = useSession(); // rename data to session
@@ -30,7 +32,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="bg-blue-700 border-b border-blue-500">
+    <nav className="bg-white">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
         <div className="relative flex h-20 items-center justify-between">
           <div className="absolute inset-y-0 left-0 flex items-center md:hidden">
@@ -64,14 +66,17 @@ const Navbar = () => {
 
           <div className="flex flex-1 items-center justify-center md:items-stretch md:justify-start">
             {/*   Logo  */}
-            <Link className="flex flex-shrink-0 items-center" href="/">
-              <TbSteeringWheel className="text-3xl text-white" />
+            <Link
+              className="hidden md:flex flex-shrink-0 items-center"
+              href="/"
+            >
+              <TbSteeringWheel className="text-3xl text-color-red" />
               {/* <Image
                 className="h-10 w-auto"
                 src={logo}
                 alt="Rent Wheels Logo"
               /> */}
-              <span className="hidden md:block text-white text-2xl font-bold ml-2">
+              <span className="hidden md:block text-color-red text-2xl font-bold ml-2">
                 Rent Wheels
               </span>
             </Link>
@@ -81,16 +86,16 @@ const Navbar = () => {
                 <Link
                   href="/"
                   className={`${
-                    pathname === "/" ? "bg-black" : ""
-                  } text-white  hover:bg-gray-900 hover:text-white rounded-md px-3 py-2`}
+                    pathname === "/" ? "text-color-red" : "text-black"
+                  }   hover:text-color-red hover:bg-transparent  rounded-md px-3 py-2 font-bold transition-colors duration-30000`}
                 >
                   Home
                 </Link>
                 <Link
                   href="/vehicles"
                   className={`${
-                    pathname === "/vehicles" ? "bg-black" : ""
-                  } text-white  hover:bg-gray-900 hover:text-white rounded-md px-3 py-2`}
+                    pathname === "/vehicles" ? "text-color-red" : "text-black"
+                  }   hover:text-color-red hover:bg-transparent  rounded-md px-3 py-2 font-bold transition-colors duration-30000`}
                 >
                   Vehicles
                 </Link>
@@ -98,8 +103,10 @@ const Navbar = () => {
                   <Link
                     href="/vehicles/add"
                     className={`${
-                      pathname === "/vehicles/add" ? "bg-black" : ""
-                    } text-white  hover:bg-gray-900 hover:text-white rounded-md px-3 py-2`}
+                      pathname === "/vehicles/add"
+                        ? "text-color-red"
+                        : "text-black"
+                    }   hover:text-color-red hover:bg-transparent  rounded-md px-3 py-2 font-bold transition-colors duration-30000`}
                   >
                     Add Vehicles
                   </Link>
@@ -118,7 +125,7 @@ const Navbar = () => {
                     <button
                       key={index}
                       onClick={() => signIn(provider.id)}
-                      className="flex items-center text-white bg-gray-700 hover:bg-gray-900 hover:text-white rounded-md px-3 py-2"
+                      className="flex items-center text-white bg-color-red hover:bg-red-500 hover:text-white  px-3 py-2 transition-colors"
                     >
                       <FaGoogle className="text-white mr-2" />
                       <span>Login or Register</span>
@@ -130,11 +137,11 @@ const Navbar = () => {
 
           {/*   Right Side Menu (Logged In)  */}
           {session && (
-            <div className="absolute inset-y-0 right-0 flex items-center pr-2 md:static md:inset-auto md:ml-6 md:pr-0">
+            <div className="absolute inset-y-0 right-0 flex items-center  pr-2 md:static md:inset-auto md:ml-6 md:pr-0 space-x-3">
               <Link href="/messages" className="relative group">
                 <button
                   type="button"
-                  className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                  className="relative rounded-full bg-white border border-color-red  p-1 text-color-red hover:bg-color-red transition-colors hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                 >
                   <span className="absolute -inset-1.5"></span>
                   <span className="sr-only">View notifications</span>
@@ -155,26 +162,40 @@ const Navbar = () => {
                 </button>
                 <NewMessageCount session={session} />
               </Link>
+              <Link href="/profile">
+                <button
+                  type="button"
+                  className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                  id="user-menu-button"
+                  aria-expanded="false"
+                  aria-haspopup="true"
+                >
+                  <span className="absolute -inset-1.5"></span>
+                  <span className="sr-only">Open user menu</span>
+                  <Image
+                    className="h-8 w-8 rounded-full"
+                    src={profileImg || profileDefaultImg}
+                    alt="Profile Image"
+                    width={40}
+                    height={40}
+                  />
+                </button>
+              </Link>
+
               {/*   Profile dropdown button  */}
-              <div className="relative ml-3">
+              <div className="relative ">
                 <div>
                   <button
                     onClick={() => setToggleProfile((pre) => !pre)}
                     type="button"
-                    className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                    className="relative flex rounded-full  focus:outline-none"
                     id="user-menu-button"
                     aria-expanded="false"
                     aria-haspopup="true"
                   >
                     <span className="absolute -inset-1.5"></span>
                     <span className="sr-only">Open user menu</span>
-                    <Image
-                      className="h-8 w-8 rounded-full"
-                      src={profileImg || profileDefaultImg}
-                      alt="Profile Image"
-                      width={40}
-                      height={40}
-                    />
+                    <MdOutlineArrowDropDownCircle className="text-4xl text-color-red" />
                   </button>
                 </div>
 
@@ -230,21 +251,21 @@ const Navbar = () => {
 
       {/*   Mobile menu, show/hide based on menu state.  */}
       {toggleMenu && (
-        <div id="mobile-menu">
+        <div id="mobile-menu" className="bg-red-500">
           <div className="space-y-1 px-2 pb-3 pt-2">
             <Link
               href="/"
               className={`${
-                pathname === "/" ? "bg-gray-900" : ""
-              } text-white block rounded-md px-3 py-2 text-base font-medium`}
+                pathname === "/" ? "bg-white text-black" : "text-white"
+              }  block  px-3 py-2 text-base font-medium hover:bg-white hover:text-black`}
             >
               Home
             </Link>
             <Link
               href="/vehicles"
               className={`${
-                pathname === "/vehicles" ? "bg-gray-900" : ""
-              } text-white block rounded-md px-3 py-2 text-base font-medium`}
+                pathname === "/vehicles" ? "bg-white text-black" : "text-white"
+              }  block  px-3 py-2 text-base font-medium hover:bg-white hover:text-black`}
             >
               Vehicles
             </Link>
@@ -252,8 +273,10 @@ const Navbar = () => {
               <Link
                 href="/vehicles/add"
                 className={`${
-                  pathname === "/vehicles/add" ? "bg-gray-900" : ""
-                } text-white block rounded-md px-3 py-2 text-base font-medium`}
+                  pathname === "/vehicles/add"
+                    ? "bg-white text-black"
+                    : "text-white"
+                }  block  px-3 py-2 text-base font-medium hover:bg-white hover:text-black`}
               >
                 Add Vehicles
               </Link>
@@ -264,7 +287,7 @@ const Navbar = () => {
                 <button
                   key={index}
                   onClick={() => signIn(provider.id)}
-                  className="flex items-center text-white bg-gray-700 hover:bg-gray-900 hover:text-white rounded-md px-3 py-2"
+                  className="flex items-center text-black bg-white hover:bg-gray-900 hover:text-white  px-3 py-2 "
                 >
                   <span>Login or Register</span>
                 </button>

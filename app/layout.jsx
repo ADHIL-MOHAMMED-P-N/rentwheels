@@ -9,7 +9,7 @@ import "photoswipe/dist/photoswipe.css";
 
 export const metadata = {
   title: "Rent Wheels",
-  descriptio: "Find a wheel for your next trip",
+  description: "Find a wheel for your next trip",
   keywords: "rental,wheels,car, bike,van",
 };
 
