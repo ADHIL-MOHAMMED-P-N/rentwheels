@@ -3,7 +3,7 @@ import InfoCard from "./InfoCard";
 const InfoCards = () => {
   return (
     <section>
-      <div className="container-xl lg:container m-auto">
+      <div className="container-xl lg:container m-auto xl:px-12">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 rounded-lg">
           <InfoCard
             title="For Renters"
@@ -11,22 +11,29 @@ const InfoCards = () => {
             btn={{
               text: "Search Vehicles",
               link: "/vehicles",
-              bg: "bg-black",
+              bg: "bg-color-red",
             }}
           >
-            Find your rental vehicle. Bookmark vehicles and contact owners.
+            Discover hassle-free renting! Browse our diverse vehicle selection,
+            book with ease, and enjoy flexible rental options for any journey.
+            From daily commutes to weekend getaways, we've got your ride
+            covered. Rent confidently with our support team standing by to
+            assist you
           </InfoCard>
 
           <InfoCard
             title="For Vehicle Owners"
-            bg="bg-blue-100"
+            bg="bg-red-100"
             btn={{
               text: "Add Vehicles",
               link: "/vehicles/add",
-              bg: "bg-blue-500",
+              bg: "bg-white",
             }}
           >
-            List your vehicles and reach customers.
+            Unlock earning potential by listing your vehicle effortlessly. With
+            our user-friendly platform, enjoy seamless scheduling and
+            transparent communication, ensuring you maximize your income. Join
+            our community today and start monetizing your vehicle with ease!
           </InfoCard>
         </div>
       </div>

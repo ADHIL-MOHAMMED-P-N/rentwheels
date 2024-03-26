@@ -1,3 +1,4 @@
+//middleware.js is used to protect this route
 import VehicleAddForm from "@/components/VehicleAddForm";
 
 const AddVehiclesPage = () => {
