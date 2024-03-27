@@ -11,16 +11,16 @@ const HomeVehicles = async () => {
   return (
     <>
       <section className="px-4 py-6">
-        <div className="container-xl lg:container m-auto">
-          <h2 className="text-3xl font-bold text-blue-500 mb-6 text-center">
-            Recent Properties
+        <div className="container-xl lg:container m-auto xl:px-12">
+          <h2 className="text-3xl font-bold  mb-6 text-center">
+            Recent Vehicles
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {recentVehicles === 0 ? (
               <p>No Recent Vehicles</p>
             ) : (
               recentVehicles.map((item) => (
-                <VehicleCard key={item.id} vehicle={item} />
+                <VehicleCard key={item._id} vehicle={item} />
               ))
             )}
           </div>
@@ -29,7 +29,7 @@ const HomeVehicles = async () => {
       <section className="m-auto max-w-lg my-10 px-6">
         <Link
           href="/vehicles"
-          className="block bg-black text-white text-center py-4 px-6 rounded-xl hover:bg-gray-700"
+          className="font-semibold block bg-white text-color-red text-center py-4 px-6 border border-color-red  hover:bg-color-red hover:text-white transition-colors"
         >
           View All Vehicles
         </Link>
