@@ -141,7 +141,7 @@ const Navbar = () => {
               <Link href="/messages" className="relative group">
                 <button
                   type="button"
-                  className="relative rounded-full bg-white border border-color-red  p-1 text-color-red hover:bg-color-red transition-colors hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                  className="relative rounded-full bg-white border border-color-red  p-1 text-color-red hover:bg-color-red transition-colors hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 "
                 >
                   <span className="absolute -inset-1.5"></span>
                   <span className="sr-only">View notifications</span>

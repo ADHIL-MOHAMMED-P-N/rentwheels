@@ -1,7 +1,15 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { toast } from "react-toastify";
 import { useGlobalContext } from "@/context/GlobalContext";
+import { MdEmail } from "react-icons/md";
+import { FaPhoneAlt } from "react-icons/fa";
+import { MdDelete } from "react-icons/md";
+import { IoTime } from "react-icons/io5";
+import { FaEye } from "react-icons/fa";
+import profileDefaultImg from "@/assets/images/profile.png";
+import Link from "next/link";
+import Image from "next/image";
 const Message = ({ message }) => {
   const [read, setRead] = useState(message.read);
   const [isDelete, setIsDelete] = useState(false); //to conditionally render the message based on delted or not
@@ -47,38 +55,52 @@ const Message = ({ message }) => {
   };
   if (isDelete) return null; //so delted elemnt won't render
   return (
-    <div className="relative bg-white p-4 rounded-md shadow-md border border-gray-200">
+    <div className="relative bg-white p-4  shadow border border-gray-200">
       {/* new tag if read=false */}
       {!read && (
-        <div className="absolute top-2 right-2 bg-yellow-500 text-white px-2 py-1 rounded-md">
+        <div className="absolute top-2 right-2 bg-green-400 text-white px-2 py-1 ">
           New
         </div>
       )}
-      <h2 className="text-xl mb-4">
-        <span className="font-bold">Vehice Inquiry: </span>
-        {message.vehicle.name}
-      </h2>
+      <Link href={`/vehicles/${message.vehicle._id}`}>
+        <h2 className="text-xl mb-4 font-semibold hover:text-color-red">
+          {message.vehicle.name}
+        </h2>
+      </Link>
       <p className="text-gray-700">{message.messageContent}</p>
 
-      <ul className="mt-4">
-        <li>
-          <strong>Name: </strong> {message.sender.username}
+      <ul className="mt-4 text-sm">
+        <li className="text-base font-semibold">
+          <Image
+            className="h-6 w-6 rounded-full inline mr-2 mb-1 "
+            src={message.sender.image || profileDefaultImg}
+            alt="Profile Image"
+            width={40}
+            height={40}
+          />
+          {message.sender.username}
         </li>
 
         <li>
-          <strong>Reply Email: </strong>
+          <strong>
+            <MdEmail className="inline text-gray-400" /> :{" "}
+          </strong>
           <a href={`mailto:${message.email}`} className="text-blue-500">
             {message.email}
           </a>
         </li>
         <li>
-          <strong>Reply Phone: </strong>
+          <strong>
+            <FaPhoneAlt className="inline text-gray-400" /> :{" "}
+          </strong>
           <a href={`tel:${message.phone}`} className="text-blue-500">
             {message.phone}
           </a>
         </li>
         <li>
-          <strong>Received: </strong>
+          <strong>
+            <IoTime className="inline text-gray-400" /> :{" "}
+          </strong>
           {new Date(message.createdAt).toLocaleString()}
         </li>
       </ul>
@@ -86,15 +108,18 @@ const Message = ({ message }) => {
         onClick={handleRead}
         className={`mt-4 mr-3 ${
           read ? "bg-gray-200 " : "bg-blue-500 text-white"
-        }   py-1 px-3 rounded-md`}
+        }   py-1 px-3 `}
       >
-        {read ? "Mark as new" : "mark as read"}
+        {read ? "Mark as new" : "Mark as read"}{" "}
+        <FaEye
+          className={`${read ? "text-black" : "text-white"} inline mb-1 ml-1`}
+        />
       </button>
       <button
         onClick={handleDelete}
-        className="mt-4 bg-red-500 text-white py-1 px-3 rounded-md"
+        className="mt-4 bg-red-500 text-white py-1 px-3 "
       >
-        Delete
+        Delete <MdDelete className="text-white inline mb-1" />
       </button>
     </div>
   );

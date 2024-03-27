@@ -18,12 +18,13 @@ export const GET = async () => {
     //seperating the readMessages and unreadmessages, so it can be sorted(unread first)
     const readMessages = await Message.find({ receiver: userId, read: true })
       .sort({ createdAt: -1 })
-      .populate("sender", "username")
-      .populate("vehicle", "name"); //picking fields from ref Model
+      .populate("sender")
+      .populate("vehicle"); //picking fields from ref Model
     const unreadMessages = await Message.find({ receiver: userId, read: false })
       .sort({ createdAt: -1 })
-      .populate("sender", "username")
-      .populate("vehicle", "name");
+      .populate("sender")
+      .populate("vehicle");
+
     const messages = [...unreadMessages, ...readMessages]; //unread sorted first
 
     return new Response(JSON.stringify(messages), { status: 200 });
