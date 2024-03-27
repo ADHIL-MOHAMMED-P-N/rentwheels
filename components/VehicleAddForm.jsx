@@ -13,6 +13,8 @@ const VehicleAddForm = () => {
       pincode: "",
     },
     number_of_seats: 4,
+    gear: "Manual",
+    fuel: "fuel",
     features: ["Voice control"],
     rates: {
       hourly: 400,
@@ -78,7 +80,7 @@ const VehicleAddForm = () => {
 
       <div className="mb-4">
         <label htmlFor="type" className="block text-gray-700 font-bold mb-2">
-          Property Type
+          Vehicle Type
         </label>
         <select
           id="type"
@@ -98,9 +100,7 @@ const VehicleAddForm = () => {
         </select>
       </div>
       <div className="mb-4">
-        <label className="block text-gray-700 font-bold mb-2">
-          Listing Name
-        </label>
+        <label className="block text-gray-700 font-bold mb-2">Model Name</label>
         <input
           type="text"
           id="name"
@@ -130,7 +130,7 @@ const VehicleAddForm = () => {
         ></textarea>
       </div>
 
-      <div className="mb-4 bg-blue-50 p-4">
+      <div className="mb-4 bg-red-50 p-4">
         <label className="block text-gray-700 font-bold mb-2">Location</label>
         <input
           type="text"
@@ -172,7 +172,7 @@ const VehicleAddForm = () => {
         />
       </div>
 
-      <div className="mb-4 flex flex-wrap">
+      <div className="mb-4 flex flex-wrap space-y-3 sm:space-y-0">
         <div className="w-full sm:w-1/3 pr-2">
           <label htmlFor="seats" className="block text-gray-700 font-bold mb-2">
             Number of Seats
@@ -186,6 +186,45 @@ const VehicleAddForm = () => {
             value={fields.number_of_seats}
             onChange={handleChange}
           />
+        </div>
+        <div className="w-full sm:w-1/3 pr-2">
+          <label
+            htmlFor="gearType"
+            className="block text-gray-700 font-bold mb-2"
+          >
+            Gear Type
+          </label>
+          <select
+            id="gear"
+            name="gear"
+            className="border rounded w-full py-2 px-3"
+            required
+            value={fields.gear}
+            onChange={handleChange}
+          >
+            <option value="Manual">Manual</option>
+            <option value="Automatic">Automatic</option>
+          </select>
+        </div>
+        <div className="w-full sm:w-1/3 pr-2">
+          <label
+            htmlFor="gearType"
+            className="block text-gray-700 font-bold mb-2"
+          >
+            Fuel Type
+          </label>
+          <select
+            id="fuel"
+            name="fuel"
+            className="border rounded w-full py-2 px-3"
+            required
+            value={fields.fuel}
+            onChange={handleChange}
+          >
+            <option value="Petrol">Petrol</option>
+            <option value="Diesel">Diesel</option>
+            <option value="Electric">Electric</option>
+          </select>
         </div>
       </div>
 
@@ -245,14 +284,12 @@ const VehicleAddForm = () => {
               type="checkbox"
               id="amenity_pool"
               name="features"
-              value="Anti-lock Braking System (ABS)"
+              value="ABS"
               className="mr-2"
-              checked={fields.features.includes(
-                "Anti-lock Braking System (ABS)"
-              )}
+              checked={fields.features.includes("ABS")}
               onChange={handleFeatureChange}
             />
-            <label htmlFor="amenity_pool">Anti-lock Braking System (ABS)</label>
+            <label htmlFor="amenity_pool"> ABS</label>
           </div>
           <div>
             <input
@@ -447,7 +484,7 @@ const VehicleAddForm = () => {
 
       <div>
         <button
-          className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline"
+          className="bg-color-red hover:opacity-80 text-white font-bold py-2 px-4  w-full focus:outline-none focus:shadow-outline"
           type="submit"
         >
           Add Vehicle

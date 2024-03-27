@@ -26,7 +26,7 @@ export const GET = async (request) => {
     });
   }
 };
-
+//POST /api/vehicles
 export const POST = async (request) => {
   try {
     await connectDB();
@@ -55,6 +55,8 @@ export const POST = async (request) => {
         pincode: formData.get("location.pincode"),
       },
       number_of_seats: formData.get("number_of_seats"),
+      gear: formData.get("gear"),
+      fuel: formData.get("fuel"),
       features,
       rates: {
         hourly: formData.get("rates.hourly"),
@@ -93,7 +95,9 @@ export const POST = async (request) => {
     }
 
     //saving to db
+
     const newVehicle = new Vehicle(vehicleData);
+    console.log(newVehicle);
     await newVehicle.save();
     return Response.redirect(
       `${process.env.NEXTAUTH_URL}/vehicles/${newVehicle._id}`

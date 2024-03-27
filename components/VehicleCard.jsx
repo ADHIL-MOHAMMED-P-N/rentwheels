@@ -41,11 +41,11 @@ const VehicleCard = ({ vehicle }) => {
           <p>
             <FaGasPump className="mr-1 inline" />
 
-            <span className="md:hidden lg:inline"> Petrol</span>
+            <span className="md:hidden lg:inline"> {vehicle.fuel}</span>
           </p>
           <p>
             <FaGear className="mr-1 inline" />
-            <span className="md:hidden lg:inline"> Manual</span>
+            <span className="md:hidden lg:inline"> {vehicle.gear}</span>
           </p>
         </div>
 

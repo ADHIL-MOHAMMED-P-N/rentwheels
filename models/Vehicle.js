@@ -36,6 +36,14 @@ const VehicleSchema = new Schema(
       type: Number,
       required: true,
     },
+    gear: {
+      type: String,
+      required: true,
+    },
+    fuel: {
+      type: String,
+      required: true,
+    },
     features: [{ type: String }],
     rates: {
       hourly: {

@@ -15,3 +15,6 @@
     ),
     url("/images/vehicles/cars.jpg");
 }
+input[type="checkbox"] {
+  accent-color: #da0a2e;
+}
