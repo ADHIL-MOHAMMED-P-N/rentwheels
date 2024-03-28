@@ -254,7 +254,7 @@ const Navbar = () => {
 
       {/*   Mobile menu, show/hide based on menu state.  */}
       {toggleMenu && (
-        <div id="mobile-menu" className="bg-red-500">
+        <div id="mobile-menu" className="bg-color-red">
           <div className="space-y-1 px-2 pb-3 pt-2">
             <Link
               href="/"

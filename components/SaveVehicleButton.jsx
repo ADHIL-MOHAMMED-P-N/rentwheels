@@ -68,7 +68,7 @@ const SaveVehicleButton = ({ vehicle }) => {
   return isSaved ? (
     <button
       onClick={handleSave}
-      className="bg-red-500 hover:bg-red-600 text-white font-bold w-full py-2 px-4 rounded-full flex items-center justify-center"
+      className="bg-color-red hover:bg-red-700 text-white font-bold w-full py-2 px-4  flex items-center justify-center"
     >
       <FaBookmark className="fas fa-share mr-2" /> Remove Bookmark
     </button>
@@ -76,7 +76,7 @@ const SaveVehicleButton = ({ vehicle }) => {
     <>
       <button
         onClick={handleSave}
-        className="bg-blue-500 hover:bg-blue-600 text-white font-bold w-full py-2 px-4 rounded-full flex items-center justify-center"
+        className="hover:bg-color-red hover:text-white bg-white border text-color-red border-color-red  font-bold w-full py-2 px-4  flex items-center justify-center"
       >
         <FaBookmark className="fas fa-share mr-2" /> Bookmark Vehicle
       </button>

@@ -49,7 +49,7 @@ const ContactForm = ({ vehicle }) => {
   //later display form only if there is usersession
   return (
     <>
-      <div className="bg-white p-6 rounded-lg shadow-md">
+      <div className="bg-white p-6  shadow-md">
         <h3 className="text-xl font-bold mb-6">Contact Property Manager</h3>
         <form onSubmit={handleFormSubmit}>
           <div className="mb-4">
@@ -119,7 +119,7 @@ const ContactForm = ({ vehicle }) => {
           </div>
           <div>
             <button
-              className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline flex items-center justify-center"
+              className="bg-color-red hover:bg-red-700 text-white font-bold py-2 px-4  w-full focus:outline-none focus:shadow-outline flex items-center justify-center"
               type="submit"
             >
               <FaPaperPlane className=" mr-2" />

@@ -61,7 +61,7 @@ export const POST = async (request) => {
     if (isBookmarked) {
       // If already bookmarked, remove it
       user.bookmarks.pull(vehicleId);
-      message = "Vehicle deleted successfully";
+      message = "Vehicle unsaved successfully";
       isBookmarked = false;
     } else {
       // If not bookmarked, add it
