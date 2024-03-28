@@ -1,6 +1,5 @@
 "use client";
 import Image from "next/image";
-
 import { TbSteeringWheel } from "react-icons/tb";
 import profileDefaultImg from "@/assets/images/profile.png";
 import Link from "next/link";
@@ -11,6 +10,9 @@ import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 import NewMessageCount from "./NewMessageCount";
 import { IoMdArrowDropdownCircle } from "react-icons/io";
 import { MdOutlineArrowDropDownCircle } from "react-icons/md";
+import { FaUser } from "react-icons/fa";
+import { FaBookmark } from "react-icons/fa";
+import { RiLogoutBoxFill } from "react-icons/ri";
 
 const Navbar = () => {
   const { data: session } = useSession(); // rename data to session
@@ -203,7 +205,7 @@ const Navbar = () => {
                 {toggleProfile && (
                   <div
                     id="user-menu"
-                    className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                    className="absolute right-0 z-10 mt-2 w-48 origin-top-right  bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
                     role="menu"
                     aria-orientation="vertical"
                     aria-labelledby="user-menu-button"
@@ -211,35 +213,36 @@ const Navbar = () => {
                   >
                     <Link
                       href="/profile"
-                      className="block px-4 py-2 text-sm text-gray-700"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-color-red hover:text-white"
                       role="menuitem"
                       tabIndex="-1"
                       id="user-menu-item-0"
                       onClick={() => setToggleProfile(false)}
                     >
-                      Your Profile
+                      <FaUser className="inline mr-1" /> Your Profile
                     </Link>
                     <Link
                       href="/vehicles/saved"
-                      className="block px-4 py-2 text-sm text-gray-700"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-color-red hover:text-white"
                       role="menuitem"
                       tabIndex="-1"
                       id="user-menu-item-2"
                       onClick={() => setToggleProfile(false)}
                     >
-                      Saved Vehicles
+                      <FaBookmark className="inline me-1" /> Saved Vehicles
                     </Link>
                     <button
                       onClick={() => {
                         setToggleProfile(false);
                         signOut();
                       }}
-                      className="block px-4 py-2 text-sm text-gray-700"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-color-red hover:text-white w-full text-left"
                       role="menuitem"
                       tabIndex="-1"
                       id="user-menu-item-2"
                     >
-                      Sign Out
+                      <RiLogoutBoxFill className="inline mr-1 text-base" /> Sign
+                      Out
                     </button>
                   </div>
                 )}
