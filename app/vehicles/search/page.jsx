@@ -38,7 +38,7 @@ const SearchResult = () => {
 
   return (
     <>
-      <section className="bg-blue-700 py-4">
+      <section className="bg-gray-400 py-4">
         <div className="max-w-7xl mx-auto px-4 flex flex-col items-start sm:px-6 lg:px-8">
           <VehicleSearchForm />
         </div>
@@ -50,7 +50,7 @@ const SearchResult = () => {
           <div className="container-xl lg:container m-auto px-4 py-6">
             <Link
               href="/vehicles"
-              className="flex items-center text-blue-500 hover:underline mb-3"
+              className="flex items-center text-color-red hover:underline mb-3"
             >
               <FaArrowAltCircleLeft className="mr-2 mb-1" /> Back To Vehicles
             </Link>

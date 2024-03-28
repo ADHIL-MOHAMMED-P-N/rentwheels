@@ -24,7 +24,7 @@ export const GET = async (request) => {
       ],
     };
 
-    // Only check for vehicle if its not 'All' type field
+    // Only check for vehicle if its not 'All' type field - (adding to query)
     //regx for type
     if (type && type !== "All") {
       const typePattern = new RegExp(type, "i");
