@@ -87,6 +87,8 @@ export const PUT = async (request, { params }) => {
         pincode: formData.get("location.pincode"),
       },
       number_of_seats: formData.get("number_of_seats"),
+      gear: formData.get("gear"),
+      fuel: formData.get("fuel"),
       features,
       rates: {
         hourly: formData.get("rates.hourly"),

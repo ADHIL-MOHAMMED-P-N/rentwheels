@@ -97,7 +97,7 @@ export const POST = async (request) => {
     //saving to db
 
     const newVehicle = new Vehicle(vehicleData);
-    console.log(newVehicle);
+
     await newVehicle.save();
     return Response.redirect(
       `${process.env.NEXTAUTH_URL}/vehicles/${newVehicle._id}`

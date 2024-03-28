@@ -20,6 +20,8 @@ const VehicleEditForm = () => {
       pincode: "",
     },
     number_of_seats: 4,
+    gear: "Manual",
+    fuel: "fuel",
     features: ["Voice control"],
     rates: {
       hourly: 400,
@@ -122,7 +124,7 @@ const VehicleEditForm = () => {
 
         <div className="mb-4">
           <label htmlFor="type" className="block text-gray-700 font-bold mb-2">
-            Property Type
+            Vehicle Type
           </label>
           <select
             id="type"
@@ -143,14 +145,14 @@ const VehicleEditForm = () => {
         </div>
         <div className="mb-4">
           <label className="block text-gray-700 font-bold mb-2">
-            Listing Name
+            Modal Name
           </label>
           <input
             type="text"
             id="name"
             name="name"
             className="border rounded w-full py-2 px-3 mb-2"
-            placeholder="eg. Beautiful Apartment In Miami"
+            placeholder="eg.Excellent Drive"
             required
             value={fields.name}
             onChange={handleChange}
@@ -174,7 +176,7 @@ const VehicleEditForm = () => {
           ></textarea>
         </div>
 
-        <div className="mb-4 bg-blue-50 p-4">
+        <div className="mb-4 bg-red-50 p-4">
           <label className="block text-gray-700 font-bold mb-2">Location</label>
           <input
             type="text"
@@ -234,6 +236,45 @@ const VehicleEditForm = () => {
               onChange={handleChange}
             />
           </div>
+          <div className="w-full sm:w-1/3 pr-2">
+            <label
+              htmlFor="gearType"
+              className="block text-gray-700 font-bold mb-2"
+            >
+              Gear Type
+            </label>
+            <select
+              id="gear"
+              name="gear"
+              className="border rounded w-full py-2 px-3"
+              required
+              value={fields.gear}
+              onChange={handleChange}
+            >
+              <option value="Manual">Manual</option>
+              <option value="Automatic">Automatic</option>
+            </select>
+          </div>
+          <div className="w-full sm:w-1/3 pr-2">
+            <label
+              htmlFor="gearType"
+              className="block text-gray-700 font-bold mb-2"
+            >
+              Fuel Type
+            </label>
+            <select
+              id="fuel"
+              name="fuel"
+              className="border rounded w-full py-2 px-3"
+              required
+              value={fields.fuel}
+              onChange={handleChange}
+            >
+              <option value="Petrol">Petrol</option>
+              <option value="Diesel">Diesel</option>
+              <option value="Electric">Electric</option>
+            </select>
+          </div>
         </div>
 
         <div className="mb-4">
@@ -292,16 +333,12 @@ const VehicleEditForm = () => {
                 type="checkbox"
                 id="amenity_pool"
                 name="features"
-                value="Anti-lock Braking System (ABS)"
+                value="ABS"
                 className="mr-2"
-                checked={fields.features.includes(
-                  "Anti-lock Braking System (ABS)"
-                )}
+                checked={fields.features.includes("ABS")}
                 onChange={handleFeatureChange}
               />
-              <label htmlFor="amenity_pool">
-                Anti-lock Braking System (ABS)
-              </label>
+              <label htmlFor="amenity_pool">ABS</label>
             </div>
             <div>
               <input
@@ -391,7 +428,7 @@ const VehicleEditForm = () => {
           </div>
         </div>
 
-        <div className="mb-4 bg-blue-50 p-4">
+        <div className="mb-4 bg-red-50 p-4">
           <label className="block text-gray-700 font-bold mb-2">
             Rates (Leave blank if not applicable)
           </label>
@@ -480,7 +517,7 @@ const VehicleEditForm = () => {
 
         <div>
           <button
-            className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline"
+            className="bg-color-red hover:opacity-80 text-white font-bold py-2 px-4  w-full focus:outline-none focus:shadow-outline"
             type="submit"
           >
             Update Vehicle

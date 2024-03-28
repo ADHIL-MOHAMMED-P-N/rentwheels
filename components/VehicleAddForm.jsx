@@ -106,7 +106,7 @@ const VehicleAddForm = () => {
           id="name"
           name="name"
           className="border rounded w-full py-2 px-3 mb-2"
-          placeholder="eg. Beautiful Apartment In Miami"
+          placeholder="eg.Excellent Drive"
           required
           value={fields.name}
           onChange={handleChange}
@@ -379,7 +379,7 @@ const VehicleAddForm = () => {
         </div>
       </div>
 
-      <div className="mb-4 bg-blue-50 p-4">
+      <div className="mb-4 bg-red-50 p-4">
         <label className="block text-gray-700 font-bold mb-2">
           Rates (Leave blank if not applicable)
         </label>
