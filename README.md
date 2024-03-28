@@ -41,6 +41,3 @@ Contributions are welcome! Please feel free to open an issue or submit a pull re
 
 This project is licensed under the [MIT License](LICENSE).
 
-## Acknowledgements
-
-We would like to thank all contributors and users who have helped make RentWheels a robust and efficient platform for vehicle rentals.
