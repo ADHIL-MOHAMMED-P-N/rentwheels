@@ -43,14 +43,14 @@ const VehicleSearchForm = () => {
           value={type}
           onChange={(e) => setType(e.target.value)}
         >
-          <option value="All">All</option>
-          <option value="Apartment">Apartment</option>
-          <option value="Studio">Studio</option>
-          <option value="Condo">Condo</option>
-          <option value="House">House</option>
-          <option value="Cabin Or Cottage">Cabin or Cottage</option>
-          <option value="Loft">Loft</option>
-          <option value="Room">Room</option>
+          <option value="Economy Car">Economy Car</option>
+          <option value="Sedan">Sedan</option>
+          <option value="SUV">SUV</option>
+          <option value="Van/Minivan">Van/Minivan</option>
+          <option value="Convertible">Convertible</option>
+          <option value="Electric Car">Electric Car</option>
+          <option value="Pickup Truck">Pickup Truck</option>
+          <option value="Bike">Bike</option>
           <option value="Other">Other</option>
         </select>
       </div>

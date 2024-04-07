@@ -3,12 +3,12 @@ import { useState } from "react";
 const VehicleAddForm = () => {
   //instead of creating each states for each fields , create a fields onject
   const [fields, setFields] = useState({
-    name: "Tata SUV",
-    type: "Car",
-    description: "Nice car",
+    name: "",
+    type: "Economy Car",
+    description: "",
     location: {
       street: "",
-      city: "Thrissur",
+      city: "",
       state: "Kerala",
       pincode: "",
     },
@@ -22,7 +22,7 @@ const VehicleAddForm = () => {
     },
     seller: {
       name: "",
-      email: "johndoe@gmail.com",
+      email: "",
       phone: "",
     },
     images: [],
@@ -90,12 +90,14 @@ const VehicleAddForm = () => {
           value={fields.type}
           onChange={handleChange}
         >
-          <option value="Apartment">Apartment</option>
-          <option value="Condo">Condo</option>
-          <option value="House">House</option>
-          <option value="Cabin Or Cottage">Cabin or Cottage</option>
-          <option value="Room">Room</option>
-          <option value="Studio">Studio</option>
+          <option value="Economy Car">Economy Car</option>
+          <option value="Sedan">Sedan</option>
+          <option value="SUV">SUV</option>
+          <option value="Van/Minivan">Van/Minivan</option>
+          <option value="Convertible">Convertible</option>
+          <option value="Electric Car">Electric Car</option>
+          <option value="Pickup Truck">Pickup Truck</option>
+          <option value="Bike">Bike</option>
           <option value="Other">Other</option>
         </select>
       </div>
@@ -106,7 +108,7 @@ const VehicleAddForm = () => {
           id="name"
           name="name"
           className="border rounded w-full py-2 px-3 mb-2"
-          placeholder="eg.Excellent Drive"
+          placeholder="eg. Volkswagen Vento 2012"
           required
           value={fields.name}
           onChange={handleChange}
