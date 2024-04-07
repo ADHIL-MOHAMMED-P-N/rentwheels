@@ -10,6 +10,7 @@ import { FaEye } from "react-icons/fa";
 import profileDefaultImg from "@/assets/images/profile.png";
 import Link from "next/link";
 import Image from "next/image";
+
 const Message = ({ message }) => {
   const [read, setRead] = useState(message.read);
   const [isDelete, setIsDelete] = useState(false); //to conditionally render the message based on delted or not
@@ -62,9 +63,9 @@ const Message = ({ message }) => {
           New
         </div>
       )}
-      <Link href={`/vehicles/${message.vehicle._id}`}>
+      <Link href={`/vehicles/${message.vehicle?._id}`}>
         <h2 className="text-xl mb-4 font-semibold hover:text-color-red">
-          {message.vehicle.name}
+          {message.vehicle?.name}
         </h2>
       </Link>
       <p className="text-gray-700">{message.messageContent}</p>

@@ -26,7 +26,7 @@ export const GET = async () => {
       .populate("vehicle");
 
     const messages = [...unreadMessages, ...readMessages]; //unread sorted first
-
+    console.log(messages);
     return new Response(JSON.stringify(messages), { status: 200 });
   } catch (error) {
     console.log(error);
